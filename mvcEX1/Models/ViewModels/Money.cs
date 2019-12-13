@@ -18,10 +18,4 @@ namespace mvcEX1.Models.ViewModels
             this.id = id;
         }
     }
-
-    public enum MoneyTypeEnum
-    {
-        Income = 0,
-        Expend = 1
-    }
 }
