@@ -135,7 +135,7 @@
     </Compile>
     <Compile Include="Models\AccountBook.cs" />
     <Compile Include="Models\SkillTreeHomework.cs" />
-    <Compile Include="Models\ViewModels\Money.cs" />
+    <Compile Include="Models\ViewModels\MoneyViewModel.cs" />
     <Compile Include="Models\ViewModels\MoneyTypeEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
