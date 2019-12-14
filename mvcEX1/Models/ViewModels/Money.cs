@@ -5,7 +5,7 @@ using System.Web;
 
 namespace mvcEX1.Models.ViewModels
 {
-    public class Money
+    public class MoneyViewmodel
     {
         private int id;
         public int ID { get { return this.id; } }
@@ -13,7 +13,7 @@ namespace mvcEX1.Models.ViewModels
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
-        public Money (int id)
+        public MoneyViewmodel (int id)
         {
             this.id = id;
         }
