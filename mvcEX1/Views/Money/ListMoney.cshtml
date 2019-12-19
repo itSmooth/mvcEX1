@@ -1,0 +1,30 @@
+﻿@using mvcEX1.Models.ViewModels;
+@model List<MoneyViewModel>
+@{ Layout = null; }
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>類別</th>
+                <th>日期</th>
+                <th>金額</th>
+            </tr>
+            @if (Model != null)
+            {
+                int i = 1;
+                foreach (var money in Model)
+                {
+                    <tr>
+                        <td> @i </td>
+                        <td> @(money.MoneyType == MoneyTypeEnum.Income ? "收入" : "支出") </td>
+                        <td> @money.Date.ToString("yyyy-MM-dd") </td>
+                        <td> @money.Amount.ToString("N0") </td>
+                    </tr>
+                    i++;
+                }
+            }
+        </table>
+    </div>
+</div>

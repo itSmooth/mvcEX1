@@ -13,12 +13,17 @@ namespace mvcEX1.Controllers
         // GET: Money
         public ActionResult Index()
         {
+            return View();
+        }
 
+        [ChildActionOnly]
+        public ActionResult ListMoney()
+        {
             var db = new SkillTreeHomework();
             var accountBook = db.AccountBook;
             var moneys = new List<MoneyViewModel>();
 
-            foreach(var item in accountBook)
+            foreach (var item in accountBook)
             {
                 moneys.Add(new MoneyViewModel(item.Id)
                 {
@@ -31,5 +36,7 @@ namespace mvcEX1.Controllers
 
             return View(moneys);
         }
+
+
     }
 }
