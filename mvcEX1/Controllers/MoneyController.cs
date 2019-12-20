@@ -16,6 +16,27 @@ namespace mvcEX1.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(MoneyViewModel money)
+        {
+            if (ModelState.IsValid)
+            {
+                var db = new SkillTreeHomework();
+                var accountBook = new AccountBook();
+                accountBook.Id = Guid.NewGuid();
+                accountBook.Amounttt =(int) money.Amount;
+                accountBook.Categoryyy =(int) money.MoneyType;
+                accountBook.Dateee = money.Date;
+
+                // TODO : Remarkkk沒填資料會出現 錯誤，資料是 空字串、空白符號，也不行，暫時填上 ?
+                accountBook.Remarkkk = money.Description != null ? money.Description : "?";
+                db.AccountBook.Add(accountBook);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         [ChildActionOnly]
         public ActionResult ListMoney()
         {
@@ -25,13 +46,14 @@ namespace mvcEX1.Controllers
 
             foreach (var item in accountBook)
             {
-                moneys.Add(new MoneyViewModel(item.Id)
+                moneys.Add(new MoneyViewModel()
                 {
+                    ID = item.Id,
                     MoneyType = (item.Categoryyy == 0 ? MoneyTypeEnum.Income : MoneyTypeEnum.Expend),
                     Amount = (decimal)item.Amounttt,
                     Date = item.Dateee,
                     Description = item.Remarkkk
-                });
+                }) ;
             }
 
             return View(moneys);

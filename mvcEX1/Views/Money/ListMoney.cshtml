@@ -16,15 +16,33 @@
                 int i = 1;
                 foreach (var money in Model)
                 {
-                    <tr>
-                        <td> @i </td>
-                        <td> @(money.MoneyType == MoneyTypeEnum.Income ? "收入" : "支出") </td>
-                        <td> @money.Date.ToString("yyyy-MM-dd") </td>
-                        <td> @money.Amount.ToString("N0") </td>
-                    </tr>
+        <tr>
+            <td> @i </td>
+            @{ if (money.MoneyType == MoneyTypeEnum.Income)
+                {
+                    <td class="blueFont">收入</td>
+                }
+                else
+                {
+                    <td class="redFont">支出</td>
+                }
+            }
+            <td> @money.Date.ToString("yyyy-MM-dd") </td>
+            <td> @money.Amount.ToString("N0") </td>
+        </tr>
                     i++;
                 }
             }
         </table>
     </div>
 </div>
+
+<style type="text/css">
+    .redFont {
+        color: red;
+    }
+
+    .blueFont {
+        color: blue;
+    }
+</style>

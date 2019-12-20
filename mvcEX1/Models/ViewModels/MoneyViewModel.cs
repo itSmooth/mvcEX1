@@ -8,12 +8,11 @@ namespace mvcEX1.Models.ViewModels
 {
     public class MoneyViewModel
     {
-        private Guid id;
-        
         [Display(Name ="編號")]
-        public Guid ID { get { return this.id; } }
+        public Guid ID { get; set; }
 
         [Display(Name ="類別")]
+        [Required(ErrorMessage = "請選擇 收入 或 支出")]
         public MoneyTypeEnum MoneyType { get; set; }
 
         [Display(Name="金額")]
@@ -29,9 +28,5 @@ namespace mvcEX1.Models.ViewModels
         [MaxLength(100,ErrorMessage ="最多輸入100字")]
         public string Description { get; set; }
 
-        public MoneyViewModel (Guid id)
-        {
-            this.id = id;
-        }
     }
 }
